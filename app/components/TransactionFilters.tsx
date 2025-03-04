@@ -10,10 +10,7 @@ export const TransactionFilters: React.FC<FilterProps> = ({
   const filters = [
     "All",
     "Income",
-    "Expenses",
-    "Transfers",
-    "Payments",
-    "Fees",
+    "Expense"
   ];
 
   return (

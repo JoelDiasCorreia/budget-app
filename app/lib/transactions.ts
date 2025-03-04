@@ -9,3 +9,9 @@ export const createTransaction = (transaction: CreatableTransaction) =>{
         },
     });
 }
+
+export const getTransactions = () =>{
+    return fetch("/api/v1/transaction", {
+        method: "GET",
+    });
+}
