@@ -9,7 +9,7 @@ export interface Transaction extends CreatableTransaction{
 }
 
 export interface CreatableTransaction{
-    date: string;
+    date: number;
     description: string;
     category: string;
     amount: number;
@@ -30,7 +30,7 @@ export interface NavigationItem {
 export type TransactionResult  = {
   amount: number;
   category: string;
-  date: string;
+  date: number;
   description: string;
 }
 

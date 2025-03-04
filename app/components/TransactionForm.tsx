@@ -41,7 +41,7 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
             onsubmit({
                 amount: amount,
                 category: category,
-                date: date,
+                date: new Date(date).getTime(),
                 description: description
             });
         } catch (e) {
