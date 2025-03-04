@@ -7,7 +7,7 @@ export interface Transaction {
   description: string;
   category: string;
   amount: number;
-  type: "income" | "expense";
+  type: TransactionType;
 }
 
 export interface Budget {
@@ -21,3 +21,16 @@ export interface NavigationItem {
   label: string;
   href: string;
 }
+export type TransactionResult  = {
+  amount: number;
+  source: string;
+  date: string;
+  notes: string;
+}
+
+export type Category = {
+    label: string;
+    value: string;
+}
+
+export type TransactionType = "income" | "expense";
