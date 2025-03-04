@@ -5,10 +5,10 @@ import {useCallback, useState} from "react";
 interface TransactionFormProps {
     title: string;
     amountLabel: string;
-    sourceLabel: string;
-    sourceOptions: Category[];
+    categoryLabel: string;
+    categoryOptions: Category[];
     dateLabel: string;
-    notesLabel: string;
+    descriptionLabel: string;
     submitLabel: string;
     hasSucceed: boolean;
     onsubmit: (result: TransactionResult) => void;
@@ -18,10 +18,10 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
     {
         title,
         amountLabel,
-        sourceLabel,
-        sourceOptions,
+        categoryLabel,
+        categoryOptions,
         dateLabel,
-        notesLabel,
+        descriptionLabel,
         submitLabel,
         hasSucceed,
         onsubmit
@@ -29,9 +29,9 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
 ) => {
 
     const [amount, setAmount] = useState(0);
-    const [source, setSource] = useState("");
+    const [category, setCategory] = useState("");
     const [date, setDate] = useState("");
-    const [note, setNote] = useState("");
+    const [description, setDescription] = useState("");
     const [isProcessing, setIsProcessing] = useState(false);
     const [isError, setIsError] = useState(false);
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -40,9 +40,9 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
         try {
             onsubmit({
                 amount: amount,
-                source: source,
+                category: category,
                 date: date,
-                notes: note
+                description: description
             });
         } catch (e) {
             console.error(e)
@@ -86,16 +86,16 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
 
                 <div className="flex flex-col w-full mt-6">
                     <label className="pb-2 text-base leading-6 text-neutral-900">
-                        {sourceLabel}
+                        {categoryLabel}
                     </label>
                     <select
                         disabled={isProcessing}
-                        onChange={(event) => setSource(event.target.value)}
+                        onChange={(event) => setCategory(event.target.value)}
                         className="p-4 h-14 text-base leading-6 bg-gray-100 rounded-xl border border-solid border-zinc-200 text-slate-500 max-sm:text-sm">
-                        <option value="">Select a {sourceLabel.toLowerCase()}</option>
+                        <option value="">Select a {categoryLabel.toLowerCase()}</option>
 
                         {
-                            sourceOptions.map((option) => {
+                            categoryOptions.map((option) => {
                                 return <option key={option.value} value={option.value}>{option.label}</option>
                             })
                         }
@@ -118,11 +118,11 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
 
                 <div className="flex flex-col w-full mt-6">
                     <label className="pb-2 text-base leading-6 text-neutral-900">
-                        {notesLabel}
+                        {descriptionLabel}
                     </label>
                     <textarea
                         disabled={isProcessing}
-                        onChange={(event) => setNote(event.target.value)}
+                        onChange={(event) => setDescription(event.target.value)}
                         className="flex items-center p-4 h-14 text-base leading-6 bg-gray-100 rounded-xl border border-solid border-zinc-200 min-h-36 text-slate-500 max-sm:text-sm"/>
                 </div>
 
