@@ -5,7 +5,7 @@ export default function ExpensesPage (){
     return (
         <div>
             <Header user={{
-                profileImage: "/images/profile.jpg"
+                profileImage: "/autor.jpeg"
             }}></Header>
             <ExpenseForm/>
         </div>

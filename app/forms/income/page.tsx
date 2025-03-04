@@ -6,7 +6,7 @@ export default function IncomePage (){
     return (
         <div>
             <Header user={{
-                profileImage: "/images/profile.jpg"
+                profileImage: "/autor.jpeg"
             }}></Header>
             <IncomeForm/>
         </div>
