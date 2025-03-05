@@ -5,9 +5,7 @@ import {TransactionsView} from "@/app/components/TransactionsView";
 export default function TransactionsPage (){
     return (
         <div>
-            <Header user={{
-                profileImage: "/autor.jpeg"
-            }}></Header>
+            <Header/>
             < TransactionsView
             />
         </div>

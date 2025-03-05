@@ -5,9 +5,7 @@ import {IncomeForm} from "@/app/components/IncomeForm";
 export default function IncomePage (){
     return (
         <div>
-            <Header user={{
-                profileImage: "/autor.jpeg"
-            }}></Header>
+            <Header/>
             <IncomeForm/>
         </div>
 
