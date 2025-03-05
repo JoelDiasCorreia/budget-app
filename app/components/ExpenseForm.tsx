@@ -12,6 +12,7 @@ export const ExpenseForm: React.FC = () => {
         console.log(result);
 
         await createTransaction({
+            userId: result.userId,
             amount: result.amount,
             category: result.category,
             date: result.date,

@@ -3,16 +3,11 @@ import { useState } from "react";
 import { Header } from "./Header";
 import { ExpenseForm } from "./ExpenseForm";
 import { IncomeForm } from "./IncomeForm";
-import { TransactionList } from "./TransactionList";
 import { BudgetView } from "./BudgetView";
 import { ReportsView } from "./ReportsView";
 import { SettingsView } from "./SettingsView";
 import { LoginView } from "./LoginView";
-
-const mockUser = {
-  profileImage:
-    "https://cdn.builder.io/api/v1/image/assets/TEMP/7a7c142c92b8b4f8f1e78355acba2457cb7806ea",
-};
+import {useUser} from "@auth0/nextjs-auth0/client";
 
 const mockTransactions = [
   {
@@ -42,6 +37,7 @@ type View =
 
 export const SpendwiseApp: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>("login");
+  const {user, error, isLoading} = useUser();
 
 
   const renderView = () => {
@@ -58,16 +54,13 @@ export const SpendwiseApp: React.FC = () => {
         return <SettingsView />;
       case "transactions":
       default:
-        return <LoginView />;
+        return  user ? <ReportsView />: <LoginView />;
     }
   };
 
   return (
     <div className="min-h-screen bg-white">
-      <Header
-        user={mockUser}
-
-      />
+      <Header/>
       {renderView()}
     </div>
   );
