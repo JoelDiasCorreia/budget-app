@@ -3,14 +3,13 @@ import {TransactionForm} from "@/app/components/TransactionForm";
 import {TransactionResult} from "@/app/components/types";
 import {useState} from "react";
 import {createTransaction} from "@/app/lib/transactions";
+import {useRouter} from "next/navigation";
 
 export const ExpenseForm: React.FC = () => {
 
     const [hasSucceed, setHasSucceed] = useState(false);
-
+    const router = useRouter();
     const onSubmit = async (result: TransactionResult) => {
-        console.log(result);
-
         await createTransaction({
             amount: result.amount,
             category: result.category,
@@ -19,7 +18,7 @@ export const ExpenseForm: React.FC = () => {
             type: "expense"
         });
         setHasSucceed(true);
-
+        router.push("/transactions");
     }
 
     return (

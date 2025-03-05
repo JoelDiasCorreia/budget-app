@@ -3,14 +3,12 @@ import {TransactionForm} from "@/app/components/TransactionForm";
 import {TransactionResult} from "@/app/components/types";
 import {useState} from "react";
 import {createTransaction} from "@/app/lib/transactions";
+import {useRouter} from "next/navigation";
 
 export const IncomeForm: React.FC = () => {
-
     const [hasSucceed, setHasSucceed] = useState(false);
-
+    const router = useRouter();
     const onSubmit = async (result: TransactionResult) => {
-        console.log(result);
-
         await createTransaction({
             amount: result.amount,
             category: result.category,
@@ -19,9 +17,9 @@ export const IncomeForm: React.FC = () => {
             type: "income"
         });
         setHasSucceed(true);
+        router.push("/transactions");
     }
     return (
-
         <main className="flex justify-center px-40 py-5 max-md:px-10 max-md:py-5 max-sm:p-5">
             <TransactionForm
                 title="Add a new income transaction"
