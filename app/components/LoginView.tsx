@@ -1,26 +1,19 @@
 "use client";
 import { Button } from "./Button";
 import { Input } from "./Input";
+import {useRouter} from "next/navigation";
+import {useEffect} from "react";
+import {useUser} from "@auth0/nextjs-auth0/client";
 
 export const LoginView: React.FC = () => {
+  const router = useRouter();
+  const {user, error, isLoading} = useUser();
+  useEffect(() => {
+    if(!user && !isLoading)router.push("/api/auth/login");
+  },[user,isLoading])
+
   return (
     <div className="min-h-screen bg-white">
-      <header className="flex justify-between items-center px-10 py-3 border-b border-solid border-b-gray-200 max-sm:px-5 max-sm:py-3">
-        <div className="flex gap-4 items-center">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M8 15.2699C6.56217 15.2699 5.1566 14.8435 3.96107 14.0447C2.76556 13.2459 1.83376 12.1105 1.28352 10.7821C0.733283 9.45367 0.589313 7.99193 0.869823 6.58173C1.15033 5.1715 1.84272 3.87613 2.85943 2.85943C3.87613 1.84272 5.1715 1.15034 6.58173 0.869827C7.99193 0.589317 9.45367 0.733287 10.7821 1.28352C12.1105 1.83376 13.2459 2.76556 14.0447 3.9611C14.8435 5.1566 15.2699 6.56217 15.2699 8H8V15.2699Z"
-              fill="#121417"
-            />
-          </svg>
-          <h1 className="text-lg font-bold leading-6 text-neutral-900">
-            Spendwise
-          </h1>
-        </div>
-      </header>
-
       <main className="flex justify-center px-40 py-5 bg-white min-h-[800px] max-md:px-10 max-md:py-5 max-sm:p-5">
         <div className="flex flex-col items-center px-0 py-5 w-[520px] max-sm:w-full">
           <form className="flex flex-col items-center px-4 py-5 w-full max-w-[480px]">

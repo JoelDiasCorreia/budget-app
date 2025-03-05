@@ -9,6 +9,7 @@ export interface Transaction extends CreatableTransaction{
 }
 
 export interface CreatableTransaction{
+    userId: string;
     date: number;
     description: string;
     category: string;
@@ -28,6 +29,7 @@ export interface NavigationItem {
   href: string;
 }
 export type TransactionResult  = {
+  userId: string;
   amount: number;
   category: string;
   date: number;

@@ -11,6 +11,7 @@ export const ExpenseForm: React.FC = () => {
     const router = useRouter();
     const onSubmit = async (result: TransactionResult) => {
         await createTransaction({
+            userId: result.userId,
             amount: result.amount,
             category: result.category,
             date: result.date,

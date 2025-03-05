@@ -1,6 +1,7 @@
 import {Button} from "@/app/components/Button";
 import {Category, TransactionResult} from "@/app/components/types";
 import {useCallback, useState} from "react";
+import {useUser} from "@auth0/nextjs-auth0/client";
 
 interface TransactionFormProps {
     title: string;
@@ -27,18 +28,22 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
         onsubmit
     }
 ) => {
-
+    const {user, error, isLoading} = useUser();
     const [amount, setAmount] = useState(0);
     const [category, setCategory] = useState("");
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
     const [isProcessing, setIsProcessing] = useState(false);
     const [isError, setIsError] = useState(false);
+
+    if(!user) return null;
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setIsProcessing(true);
         try {
             onsubmit({
+                userId: user?.sub as string,
                 amount: amount,
                 category: category,
                 date: new Date(date).getTime(),

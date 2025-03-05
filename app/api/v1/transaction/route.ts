@@ -8,12 +8,12 @@ enum MESSAGE {
     FETCH_ERROR = 'An error occurred while fetching the transactions',
     CREATION = 'Transaction created successfully',
     CREATION_ERROR = 'An error occurred while saving the transaction',
-    CREATION_MISSING_PARAMETERS = 'Missing amount, date, category or type',
+    CREATION_MISSING_PARAMETERS = 'Missing userId, amount, date, category or type',
     INVALID_PARAMETERS = 'Invalid parameters'
 }
 
 const areParametersValid = (newTransaction: CreatableTransaction) => {
-    return (newTransaction.date && newTransaction.amount && newTransaction.type && newTransaction.category)
+    return (newTransaction.date && newTransaction.amount && newTransaction.type && newTransaction.category && newTransaction.userId)
 }
 
 export async function GET(req: Request) {
