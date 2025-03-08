@@ -4,11 +4,7 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-export const TransactionPagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}) => {
+export const TransactionPagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
   return (
     <div className="flex gap-2 justify-center items-center p-4">
       <button
@@ -30,9 +26,7 @@ export const TransactionPagination: React.FC<PaginationProps> = ({
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`w-10 h-10 text-sm rounded-3xl cursor-pointer ${
-            currentPage === page ? "bg-blue-600 text-white" : "text-neutral-900"
-          }`}
+          className={`w-10 h-10 text-sm rounded-3xl cursor-pointer ${currentPage === page ? "bg-blue-600 text-white" : "text-neutral-900"}`}
         >
           {page}
         </button>

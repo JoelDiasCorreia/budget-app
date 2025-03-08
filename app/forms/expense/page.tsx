@@ -1,12 +1,15 @@
-import {ExpenseForm} from "@/app/components/ExpenseForm";
-import {Header} from "@/app/components/Header";
+"use client";
 
-export default function ExpensesPage () {
-    return (
-        <div>
-            <Header/>
-            <ExpenseForm/>
-        </div>
+import { ExpenseForm } from "@/app/components/transaction/ExpenseForm";
+import { Header } from "@/app/components/atomic/Header";
+import { SnackbarProvider } from "notistack";
 
-    )
+export default function ExpensesPage() {
+  return (
+    <div>
+      <SnackbarProvider />
+      <Header />
+      <ExpenseForm />
+    </div>
+  );
 }

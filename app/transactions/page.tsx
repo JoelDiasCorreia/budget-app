@@ -1,14 +1,11 @@
+import { Header } from "@/app/components/atomic/Header";
+import { TransactionsView } from "@/app/components/views/TransactionsView";
 
-import {Header} from "@/app/components/Header";
-import {TransactionsView} from "@/app/components/TransactionsView";
-
-export default function TransactionsPage (){
-    return (
-        <div>
-            <Header/>
-            < TransactionsView
-            />
-        </div>
-
-    )
+export default function TransactionsPage() {
+  return (
+    <div>
+      <Header />
+      <TransactionsView />
+    </div>
+  );
 }

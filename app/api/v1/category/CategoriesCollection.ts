@@ -1,10 +1,10 @@
-import { Db, Document, Filter, FindOptions } from "mongodb";
+import { Db, Filter } from "mongodb";
 import { ObjectId } from "mongodb";
 import clientPromise from "@/app/api/lib/mongodb";
-import { Transaction } from "@/app/components/types";
+import { Category } from "@/app/components/types";
 
-export class TransactionsCollection {
-  private readonly COLLECTION = "transaction";
+export class CategoriesCollection {
+  private readonly COLLECTION = "category";
   constructor() {}
 
   async list(filter: Filter<any>) {
@@ -21,10 +21,18 @@ export class TransactionsCollection {
     });
   }
 
-  async create(transaction: Transaction) {
+  async create(category: Category) {
     const client = clientPromise;
     const db = new Db(await client, "dev") as Db;
-    const transactionWithObjectId = { ...transaction, _id: new ObjectId(transaction._id) };
+    const transactionWithObjectId = { ...category, _id: new ObjectId(category._id) };
     return db.collection(this.COLLECTION).insertOne(transactionWithObjectId);
+  }
+
+  async delete(id: string) {
+    const client = clientPromise;
+    const db = new Db(await client, "dev") as Db;
+    return db.collection(this.COLLECTION).deleteOne({
+      _id: new ObjectId(id),
+    });
   }
 }

@@ -1,62 +1,45 @@
 "use client";
-import { Button } from "./Button";
-import { Input } from "./Input";
-import {useRouter} from "next/navigation";
-import {useEffect} from "react";
-import {useUser} from "@auth0/nextjs-auth0/client";
+import { Button } from "../atomic/Button";
+import { Input } from "../atomic/Input";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export const LoginView: React.FC = () => {
   const router = useRouter();
-  const {user, error, isLoading} = useUser();
+  const { user, error, isLoading } = useUser();
   useEffect(() => {
-    if(!user && !isLoading)router.push("/api/auth/login");
-  },[user,isLoading])
+    if (!user && !isLoading) router.push("/api/auth/login");
+  }, [user, isLoading]);
 
   return (
     <div className="min-h-screen bg-white">
       <main className="flex justify-center px-40 py-5 bg-white min-h-[800px] max-md:px-10 max-md:py-5 max-sm:p-5">
         <div className="flex flex-col items-center px-0 py-5 w-[520px] max-sm:w-full">
           <form className="flex flex-col items-center px-4 py-5 w-full max-w-[480px]">
-            <h2 className="mb-5 text-3xl font-bold leading-9 text-center text-neutral-900">
-              Welcome to Spendwise
-            </h2>
+            <h2 className="mb-5 text-3xl font-bold leading-9 text-center text-neutral-900">Welcome to Spendwise</h2>
 
             <div className="px-4 py-3 w-full">
-              <Input
-                type="email"
-                label="Email"
-                placeholder="Enter your email"
-              />
+              <Input type="email" label="Email" placeholder="Enter your email" />
             </div>
 
             <div className="px-4 py-3 w-full">
-              <Input
-                type="password"
-                label="Password"
-                placeholder="Enter your password"
-              />
+              <Input type="password" label="Password" placeholder="Enter your password" />
             </div>
 
             <div className="px-4 py-0 w-full">
               <label className="flex gap-3 items-center px-0 py-3 cursor-pointer">
                 <input type="checkbox" className="hidden" />
                 <span className="w-5 h-5 rounded border-2 border-solid border-zinc-200" />
-                <span className="text-base leading-6 text-neutral-900">
-                  Keep me signed in
-                </span>
+                <span className="text-base leading-6 text-neutral-900">Keep me signed in</span>
               </label>
             </div>
 
             <Button className="mx-4 my-3 w-full">Sign in</Button>
 
-            <div className="px-4 pt-1 pb-3 w-full text-sm leading-5 text-center text-slate-500">
-              OR
-            </div>
+            <div className="px-4 pt-1 pb-3 w-full text-sm leading-5 text-center text-slate-500">OR</div>
 
-            <Button
-              variant="secondary"
-              className="flex gap-2 justify-center items-center mx-4 my-3 w-full"
-            >
+            <Button variant="secondary" className="flex gap-2 justify-center items-center mx-4 my-3 w-full">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path
                   fillRule="evenodd"
@@ -68,9 +51,7 @@ export const LoginView: React.FC = () => {
               Sign in with Google
             </Button>
 
-            <p className="px-4 pt-1 pb-3 w-full text-sm leading-5 text-center text-slate-500">
-              Don't have an account?
-            </p>
+            <p className="px-4 pt-1 pb-3 w-full text-sm leading-5 text-center text-slate-500">Don't have an account?</p>
 
             <Button variant="outline" className="mx-4 my-3 w-full">
               Sign up for free

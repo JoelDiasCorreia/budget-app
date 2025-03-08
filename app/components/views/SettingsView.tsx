@@ -7,17 +7,9 @@ interface SettingItemProps {
   onClick?: () => void;
 }
 
-const SettingItem: React.FC<SettingItemProps> = ({
-  title,
-  description,
-  value,
-  onClick,
-}) => {
+const SettingItem: React.FC<SettingItemProps> = ({ title, description, value, onClick }) => {
   return (
-    <div
-      className="flex justify-between items-center px-4 py-2 bg-white min-h-[72px] max-sm:px-3 max-sm:py-2 cursor-pointer"
-      onClick={onClick}
-    >
+    <div className="flex justify-between items-center px-4 py-2 bg-white min-h-[72px] max-sm:px-3 max-sm:py-2 cursor-pointer" onClick={onClick}>
       <div className="flex flex-col gap-1">
         <h3 className="text-base text-neutral-900">{title}</h3>
         {description && <p className="text-sm text-slate-500">{description}</p>}
@@ -34,20 +26,12 @@ export const SettingsView: React.FC = () => {
         <h1 className="p-4 text-3xl font-bold text-neutral-900">Settings</h1>
 
         <section className="mb-4">
-          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">
-            Preferences
-          </h2>
-          <SettingItem
-            title="Currency"
-            description="Set currency to USD"
-            value={<span className="text-base text-neutral-900">USD</span>}
-          />
+          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">Preferences</h2>
+          <SettingItem title="Currency" description="Set currency to USD" value={<span className="text-base text-neutral-900">USD</span>} />
         </section>
 
         <section className="mb-4">
-          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">
-            Accounts
-          </h2>
+          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">Accounts</h2>
           <SettingItem
             title="Add account"
             description="Connect a new bank or card"
@@ -67,9 +51,7 @@ export const SettingsView: React.FC = () => {
         </section>
 
         <section className="mb-4">
-          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">
-            Notifications
-          </h2>
+          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">Notifications</h2>
           <SettingItem
             title="Notifications"
             description="Receive email notifications for important messages"
@@ -82,9 +64,7 @@ export const SettingsView: React.FC = () => {
         </section>
 
         <section className="mb-4">
-          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">
-            Security
-          </h2>
+          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">Security</h2>
           <SettingItem
             title="Change password"
             value={
