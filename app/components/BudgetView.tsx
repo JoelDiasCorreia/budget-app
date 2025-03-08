@@ -14,10 +14,7 @@ const BudgetItem: React.FC<BudgetItemProps> = ({ budget }) => {
         <span className="text-sm text-neutral-900">{budget.percentage}%</span>
       </div>
       <div className="h-2 rounded bg-zinc-200">
-        <div
-          className="h-full rounded bg-neutral-900"
-          style={{ width: `${budget.percentage}%` }}
-        />
+        <div className="h-full rounded bg-neutral-900" style={{ width: `${budget.percentage}%` }} />
       </div>
       <p className="text-sm text-slate-500">
         ${budget.current} of ${budget.total}
@@ -30,10 +27,7 @@ const Sidebar: React.FC = () => {
   return (
     <aside className="flex flex-col gap-4 p-4 w-80 max-md:w-60 max-sm:hidden">
       <nav className="flex flex-col gap-2">
-        <a
-          href="#"
-          className="flex gap-3 items-center px-3 py-2 text-sm rounded-xl cursor-pointer text-neutral-900"
-        >
+        <a href="#" className="flex gap-3 items-center px-3 py-2 text-sm rounded-xl cursor-pointer text-neutral-900">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
               fillRule="evenodd"
@@ -44,10 +38,7 @@ const Sidebar: React.FC = () => {
           </svg>
           Dashboard
         </a>
-        <a
-          href="#"
-          className="flex gap-3 items-center px-3 py-2 text-sm rounded-xl cursor-pointer text-neutral-900"
-        >
+        <a href="#" className="flex gap-3 items-center px-3 py-2 text-sm rounded-xl cursor-pointer text-neutral-900">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
               fillRule="evenodd"
@@ -58,10 +49,7 @@ const Sidebar: React.FC = () => {
           </svg>
           Transactions
         </a>
-        <a
-          href="#"
-          className="flex gap-3 items-center px-3 py-2 text-sm bg-gray-100 rounded-xl cursor-pointer text-neutral-900"
-        >
+        <a href="#" className="flex gap-3 items-center px-3 py-2 text-sm bg-gray-100 rounded-xl cursor-pointer text-neutral-900">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
               fillRule="evenodd"
@@ -160,18 +148,14 @@ export const BudgetView: React.FC = () => {
         <h1 className="p-4 text-3xl font-bold text-neutral-900">Budgets</h1>
 
         <section className="mt-4">
-          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">
-            December
-          </h2>
+          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">December</h2>
           {budgets.map((budget, index) => (
             <BudgetItem key={index} budget={budget} />
           ))}
         </section>
 
         <section className="mt-4">
-          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">
-            November
-          </h2>
+          <h2 className="px-4 pt-4 pb-2 text-lg font-bold text-neutral-900">November</h2>
           {budgets.map((budget, index) => (
             <BudgetItem key={index} budget={budget} />
           ))}

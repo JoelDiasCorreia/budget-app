@@ -7,7 +7,7 @@ import { BudgetView } from "./BudgetView";
 import { ReportsView } from "./ReportsView";
 import { SettingsView } from "./SettingsView";
 import { LoginView } from "./LoginView";
-import {useUser} from "@auth0/nextjs-auth0/client";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const mockTransactions = [
   {
@@ -26,19 +26,11 @@ const mockTransactions = [
   },
 ];
 
-type View =
-  | "login"
-  | "expense"
-  | "income"
-  | "transactions"
-  | "budgets"
-  | "reports"
-  | "settings";
+type View = "login" | "expense" | "income" | "transactions" | "budgets" | "reports" | "settings";
 
 export const SpendwiseApp: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>("login");
-  const {user, error, isLoading} = useUser();
-
+  const { user, error, isLoading } = useUser();
 
   const renderView = () => {
     switch (currentView) {
@@ -54,13 +46,13 @@ export const SpendwiseApp: React.FC = () => {
         return <SettingsView />;
       case "transactions":
       default:
-        return  user ? <ReportsView />: <LoginView />;
+        return user ? <ReportsView /> : <LoginView />;
     }
   };
 
   return (
     <div className="min-h-screen bg-white">
-      <Header/>
+      <Header />
       {renderView()}
     </div>
   );

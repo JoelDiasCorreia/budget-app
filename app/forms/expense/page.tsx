@@ -1,12 +1,11 @@
-import {ExpenseForm} from "@/app/components/ExpenseForm";
-import {Header} from "@/app/components/Header";
+import { ExpenseForm } from "@/app/components/ExpenseForm";
+import { Header } from "@/app/components/Header";
 
-export default function ExpensesPage () {
-    return (
-        <div>
-            <Header/>
-            <ExpenseForm/>
-        </div>
-
-    )
+export default function ExpensesPage() {
+  return (
+    <div>
+      <Header />
+      <ExpenseForm />
+    </div>
+  );
 }
