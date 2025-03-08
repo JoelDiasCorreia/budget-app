@@ -43,7 +43,7 @@ export const TransactionForm: React.FC<TransactionFormProps> = (
         setIsProcessing(true);
         try {
             onsubmit({
-                userId: user?.sub as string,
+                userId: user?.sid as string,
                 amount: amount,
                 category: category,
                 date: new Date(date).getTime(),

@@ -2,6 +2,8 @@ import {NextResponse} from "next/server";
 import {TransactionsCollection} from "@/app/api/v1/transaction/TransactionsCollection";
 import {CreatableTransaction, Transaction} from "@/app/components/types";
 import {ApiResponse, HTTP_STATUS} from "@/app/api/lib/types";
+import { getSession } from "@auth0/nextjs-auth0";
+import { NextApiRequest } from "next";
 
 enum MESSAGE {
     FETCH = 'Transactions fetched successfully',
@@ -16,12 +18,16 @@ const areParametersValid = (newTransaction: CreatableTransaction) => {
     return (newTransaction.date && newTransaction.amount && newTransaction.type && newTransaction.category && newTransaction.userId)
 }
 
-export async function GET(req: Request) {
+export async function GET(_req: NextApiRequest) {
     try {
+        const session = await getSession()
+        if(!session?.user.sid) throw new Error('No session found');
         const transactionCollection: TransactionsCollection = new TransactionsCollection();
         const transactions: ApiResponse = {
             message: MESSAGE.FETCH,
-            content: await transactionCollection.list({})
+            content: await transactionCollection.list({
+                userId: session.user.sid
+            })
         }
         return NextResponse.json(transactions, {status: HTTP_STATUS.SUCCESS});
     } catch (error) {
@@ -37,6 +43,8 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
     try {
+        const session = await getSession();
+        if(!session?.user.sid) throw new Error('No session found');
         let newTransaction: Transaction = await req.json();
 
         if (areParametersValid(newTransaction)) {
