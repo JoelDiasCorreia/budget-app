@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "./Button";
+import { Button } from "../atomic/Button";
 
 export const ReportsView: React.FC = () => {
   return (

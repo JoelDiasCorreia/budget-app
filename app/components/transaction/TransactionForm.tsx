@@ -1,7 +1,10 @@
-import { Button } from "@/app/components/Button";
-import { Category, TransactionResult } from "@/app/components/types";
-import { useCallback, useState } from "react";
+import { Button } from "@/app/components/atomic/Button";
+import { Category, TransactionResult, TransactionType } from "@/app/components/types";
+import { useCallback, useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { getCategories } from "@/app/lib/categories";
+import { ApiResponse } from "@/app/api/lib/types";
+import { enqueueSnackbar } from "notistack";
 
 interface TransactionFormProps {
   title: string;
@@ -34,6 +37,16 @@ export const TransactionForm: React.FC<TransactionFormProps> = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  const buttonColor = useCallback(() => {
+    if (isError) {
+      return "bg-red-500 hover:bg-red-600 text-white";
+    } else if (hasSucceed) {
+      return "bg-green-500 hover:bg-green-600 text-white";
+    } else {
+      return "bg-primary-500 hover:bg-primary-600";
+    }
+  }, [isError, hasSucceed]);
+
   if (!user) return null;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -49,21 +62,11 @@ export const TransactionForm: React.FC<TransactionFormProps> = ({
       });
     } catch (e) {
       console.error(e);
-      alert("An error occurred while processing your request. Please try again later.");
+      enqueueSnackbar("An error occurred while processing your request. Please try again later.", { variant: "error" });
       setIsProcessing(false);
       setIsError(true);
     }
   };
-
-  const buttonColor = useCallback(() => {
-    if (isError) {
-      return "bg-red-500 hover:bg-red-600 text-white";
-    } else if (hasSucceed) {
-      return "bg-green-500 hover:bg-green-600 text-white";
-    } else {
-      return "bg-primary-500 hover:bg-primary-600";
-    }
-  }, [isError, hasSucceed]);
 
   return (
     <div className="flex flex-col items-center px-0 py-5 max-w-[960px] w-[520px] max-md:w-full">
@@ -92,7 +95,7 @@ export const TransactionForm: React.FC<TransactionFormProps> = ({
 
             {categoryOptions.map((option) => {
               return (
-                <option key={option.value} value={option.value}>
+                <option key={option._id} value={option._id}>
                   {option.label}
                 </option>
               );

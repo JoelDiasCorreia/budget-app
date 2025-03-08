@@ -1,5 +1,5 @@
 "use client";
-import { NavigationItem } from "./types";
+import { NavigationItem } from "../types";
 
 interface NavigationMenuProps {
   items: NavigationItem[];

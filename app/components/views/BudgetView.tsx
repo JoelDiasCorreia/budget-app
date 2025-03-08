@@ -1,6 +1,6 @@
 "use client";
-import { Budget } from "./types";
-import { Button } from "./Button";
+import { Budget } from "../types";
+import { Button } from "../atomic/Button";
 
 interface BudgetItemProps {
   budget: Budget;

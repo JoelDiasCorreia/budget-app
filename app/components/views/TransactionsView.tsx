@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Transaction } from "./types";
-import { TransactionList } from "./TransactionList";
-import { TransactionFilters } from "./TransactionFilters";
-import { TransactionPagination } from "./TransactionPagination";
-import { Button } from "./Button";
+import { Transaction } from "../types";
+import { TransactionList } from "../transaction/TransactionList";
+import { TransactionFilters } from "../transaction/TransactionFilters";
+import { TransactionPagination } from "../transaction/TransactionPagination";
+import { Button } from "../atomic/Button";
 import { useRouter } from "next/navigation";
 import { getTransactions } from "@/app/lib/transactions";
 import { ApiResponse } from "@/app/api/lib/types";

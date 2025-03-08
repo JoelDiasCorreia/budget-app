@@ -1,5 +1,5 @@
 "use client";
-import { Transaction } from "./types";
+import { Transaction } from "../types";
 import { useMemo } from "react";
 
 interface TransactionListProps {

@@ -1,9 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { TransactionsCollection } from "@/app/api/v1/transaction/TransactionsCollection";
 import { CreatableTransaction, Transaction } from "@/app/components/types";
 import { ApiResponse, HTTP_STATUS } from "@/app/api/lib/types";
 import { getSession } from "@auth0/nextjs-auth0";
-import { NextApiRequest } from "next";
 
 enum MESSAGE {
   FETCH = "Transactions fetched successfully",
@@ -18,7 +17,7 @@ const areParametersValid = (newTransaction: CreatableTransaction) => {
   return newTransaction.date && newTransaction.amount && newTransaction.type && newTransaction.category && newTransaction.userId;
 };
 
-export async function GET(_req: NextApiRequest) {
+export async function GET(_req: NextRequest) {
   try {
     const session = await getSession();
     if (!session?.user.sid) throw new Error("No session found");

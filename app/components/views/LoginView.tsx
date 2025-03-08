@@ -1,6 +1,6 @@
 "use client";
-import { Button } from "./Button";
-import { Input } from "./Input";
+import { Button } from "../atomic/Button";
+import { Input } from "../atomic/Input";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";

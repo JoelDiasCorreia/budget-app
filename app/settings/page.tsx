@@ -1,5 +1,5 @@
-import { SettingsView } from "@/app/components/SettingsView";
-import { Header } from "@/app/components/Header";
+import { SettingsView } from "@/app/components/views/SettingsView";
+import { Header } from "@/app/components/atomic/Header";
 
 export default function SettingsPage() {
   return (

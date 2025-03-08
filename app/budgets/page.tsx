@@ -1,5 +1,5 @@
-import { Header } from "@/app/components/Header";
-import { BudgetView } from "@/app/components/BudgetView";
+import { Header } from "@/app/components/atomic/Header";
+import { BudgetView } from "@/app/components/views/BudgetView";
 export default function BudgetPage() {
   return (
     <div>
